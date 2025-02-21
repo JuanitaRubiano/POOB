@@ -2,75 +2,37 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Graph {
-     private ArrayList<String> vertices;
-     private ArrayList<ArrayList<String>> edges;
+    private ArrayList<String> vertices;
+    private ArrayList<ArrayList<String>> edges;
 
-     public Graph(String[] vertices, String[][] edges) {
-        // Inicializar la lista de vértices
+    public Graph(String[] vertices, String[][] edges) {
         this.vertices = new ArrayList<>();
-        this.convertVetorToArrayList(vertices, this.vertices);
 
-        // Inicializar la lista de listas para las aristas
+        for (String vertex : vertices) {
+            String v = vertex.toUpperCase();
+            if (!this.vertices.contains(v)) {
+                this.vertices.add(v);
+            }
+        }
+
+        for (String[] edge : edges) {
+            for (int i = 0; i < edge.length; i++) {
+                edge[i] = edge[i].toUpperCase();
+            }
+        }
+
         this.edges = new ArrayList<>();
-
-        // Verificar si la matriz de aristas no está vacía para evitar errores
-        if (edges.length > 0 && edges[0].length > 0) {
-            for (int i = 0; i < edges.length; i++) {
-                ArrayList<String> row = new ArrayList<>();
-                for (int j = 0; j < edges[i].length; j++) {
-                    row.add(edges[i][j].toLowerCase());
-                }
-                this.edges.add(row);
-            }
-        }
-    }
-
-// Type copia = new Type(reftype);
-/**
- * Convierte un array de cadenas en una lista de vértices, asegurándose de que no haya duplicados.
- *
- * @param vector   El array de cadenas que representa los vértices a agregar.
- * @param vertices La lista de vértices donde se almacenarán los valores únicos.
- */
-    private void convertVetorToArrayList(String[] vector, ArrayList<String> vertices){
-        ////Itera sobre el array vector 
-        for (String vertice : vector) {
-            vertice.toLowerCase();
-            //Agrega cada vertice a la lista, siempre y cuando no este repetido.
-            if (!vertices.contains(vertice)){
-                vertices.add(vertice);
-            }
-        }
-    }
-
-    /**
- * Convierte una matriz de cadenas en una lista de listas, asegurándose de que las aristas sean válidas 
- * (es decir, que conecten vértices existentes en el grafo y que no estén duplicadas).
- *
- * @param matrix La matriz de cadenas que representa las aristas del grafo. 
- *               Cada fila contiene dos elementos que representan una conexión entre dos vértices.
- * @param edges  La lista de listas donde se almacenarán las aristas únicas.
- */
-    private void convertMatrixToMatrixArrayList(String[][] matrix, ArrayList<ArrayList<String>> edges){
-        //Itera sobre cada fila de matrix (cada arista).
-        for (String[] edge : matrix) { 
-            //Verifica que la arista tenga exactamente dos vertices y ambos existan.
-            if(edge.length == 2 && vertices.contains(edge[0])&& vertices.contains(edge[1])){
-                //convierte la fila en una lista.(una arista por cada dos vertices)
-                ArrayList<String> newEdge = new ArrayList(Arrays.asList(edge));
-                //Agrega la arista, sino esta repetida
-                if(!containsEdge(edges,newEdge)){
-                    edges.add(newEdge);
+        for (String[] edge : edges) {
+            if (edge.length == 2 && this.vertices.contains(edge[0]) && this.vertices.contains(edge[1])) {
+                ArrayList<String> newEdge = new ArrayList<>(Arrays.asList(edge));
+                if (!containsEdge(this.edges, newEdge)) {
+                    this.edges.add(newEdge);
                 }
             }
         }
     }
-    
-        public boolean contains(String vertex){
-        return this.vertices.contains(vertex);
-    }
-    
-    
+
+
     public Graph path(String start, String end) {
         return null;
     }
@@ -84,7 +46,7 @@ public class Graph {
         return null;
     }
 
-    // Método auxiliar para determinar si una lista de aristas ya contiene una arista (sin importar el orden)
+
     private boolean containsEdge(ArrayList<ArrayList<String>> edgeList, ArrayList<String> edge) {
         for (ArrayList<String> e : edgeList) {
             if (e.size() == edge.size() && e.containsAll(edge) && edge.containsAll(e)) {
@@ -94,29 +56,35 @@ public class Graph {
         return false;
     }
 
-    
-      /**
- * Retorna la canridad de vertices del grafo
- */
-    public int vertices(){
+
+    /**
+     * Retorna la canridad de vertices del grafo
+     */
+    public int vertices() {
         return vertices.size();
     }
-    
-   /**
- * Retorna la canridad de aristas del grafo
- */public int edges(){
+
+    /**
+     * Retorna la canridad de aristas del grafo
+     */
+    public int edges() {
         return edges.size();
-    }    
-    
-    
-    public boolean equals(Object o) {
-        if (!(o instanceof Graph))
-            return false;
-        return equals((Graph) o);
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Graph)) {
+            return false;
+        }
+        if ((this.vertices == ((Graph) o).vertices) && (this.edges == ((Graph) o).edges)) {
+            return true;
+        }
+        return false;
+    }
+
+
     //Only arcs in space-separated tuples. The vertices are capitalized. The edges must always be in alphabetical order.
-    //For example, (A, B) (C, D) 
+    //For example, (A, B) (C, D)
     public static void main(String[] args) {
         // Grafo de ejemplo
         String[] vertices = {"A", "B", "C", "D", "E"};
@@ -136,4 +104,39 @@ public class Graph {
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = edges.size() - 1; i >= 0; i--) {
+            sb.append("(").append(edges.get(i).get(0)).append(", ").append(edges.get(i).get(1)).append(") ");
+            if (i < edges.size() - 1) {
+                sb.append(" ");
+            }
+        }
+        return sb.toString().strip();
+    }
+
 }
+
+
+// karo
+
+//public void insertarArco(String edg) {
+//this.edges.add(new ArrayList<>(Arrays.asList(edg)));
+// }
+
+//public void eliminarArco(String edg) {
+//for (int i = 0; i < edges.size(); i++) {
+//ArrayList<String> sublista = edges.get(i);
+//if (sublista.contains(edg)) {
+//edges.remove(i);
+//i--;
+// }
+// }
+//}
+
+//public boolean enElGrafo(String edg) {
+// return this.contains(edg);
+// }
+
