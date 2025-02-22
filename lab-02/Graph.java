@@ -114,33 +114,57 @@ public class Graph {
         return sb.toString().strip();
     }
 
+    // Adicionales
+    
+    /**
+     * Función que inserta un arco entre dos vertices al conjunto de arcos
+     * del grafo.
+     * @param String vertice a , String vertice b
+     * @return void
+     */
+    public void insertarArco(String a, String b) {
+        this.edges.add(new ArrayList<>(Arrays.asList(a, b)));
+    }
 
-
-// karo
-
-public void insertarArco(String a, String b) {
-    this.edges.add(new ArrayList<>(Arrays.asList(a, b)));
-}
-
-public void eliminarArco(String a, String b) {
-    for (int i = 0; i < edges.size(); i++) {
-        ArrayList<String> sublista = edges.get(i);
-        if (sublista.equals(Arrays.asList(a, b)) || sublista.equals(Arrays.asList(b, a))) {
-            edges.remove(i);
-            i--;
+    /**
+     * Función que elimina un arco entre dos vertices del conjunto de arcos
+     * del grafo.
+     * @param String vertice a , String vertice b
+     * @return void
+     */
+    public void eliminarArco(String a, String b) {
+        for (int i = 0; i < edges.size(); i++) {
+            ArrayList<String> sublista = edges.get(i);
+            if (sublista.equals(Arrays.asList(a, b)) || sublista.equals(Arrays.asList(b, a))) {
+                edges.remove(i);
+                i--;
+            }
         }
     }
-}
 
-public boolean enElGrafo(String vertice) {
-    return vertices.contains(vertice);
-}
+    
+    /**
+     * Función que verifica si un vértice dado es parte de
+     * el conjunto de vertices del grafo
+     * @param String vertices
+     * @return boolean
+     */
+    public boolean enElGrafo(String vertice) {
+        return vertices.contains(vertice);
+    }
 
-public ArrayList<String> losVertices() {
-    return this.vertices;
-}
+    public ArrayList<String> losVertices() {
+        return this.vertices;
+    }
 
-public ArrayList<ArrayList<String>> losEdges() {
-    return this.edges;
-}
+    public ArrayList<ArrayList<String>> losEdges() {
+        return this.edges;
+    }
+
+    public Graph unite(String b, String c)
+    {
+
+        return null;
+    }
+
 }

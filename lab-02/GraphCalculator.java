@@ -107,48 +107,60 @@ public class GraphCalculator {
 
     }
 
-    // Assigns the value of a binary operation to a variable
-    // a = b op c
-    // The operator characters are: 'u' union, 'i' intersection, 'd' difference, 'j'
-    // join
-
+    /** Assigns the value of a binary operation to a variable
+    a = b op c
+    The operator characters are: 'u' union, 'i' intersection, 'd' difference, 'j'join
+     */
     public void assignBinary(String a, String b, char op, String c){
-        
+
         ultGrafo = getultGrafo();
 
         switch (op) {
 
             case 'u':
 
-                 a = ultGrafo.union(b,c);
+                Graph a = ultGrafo.unite(b,c);
                 break;
 
             case 'i':
-                 a = ultGrafo.intersection(b,c);
+                a = ultGrafo.intersection(b,c);
                 break;
 
             case 'd':                
-                 a = ultGrafo.diff(b,c);
+                a = ultGrafo.diff(b,c);
                 break;
 
             case 'j':
-                 a = ultGrafo.join(b,c);
+                a = ultGrafo.join(b,c);
                 break;
 
         }
     }
-        /**
-         * Returns the graph with the edges in uppercase in alphabetical order.
-         */
-        public String toString(Graph graph) {
+
+    /**
+     * Returns the graph with the edges in uppercase in alphabetical order.
+     */
+    public String toString(Graph graph) {
         return graph.toString();
     }
 
+    /**
+     * Función que inserta un arco entre dos vertices al conjunto de arcos
+     * del grafo dado.
+     * @param Graph grafo, String vertice a , String vertice b
+     * @return void
+     */
     private void insertarArco(Graph grafo, String a, String b) {
         grafo.insertarArco(a, b);
 
     }
 
+     /**
+     * Función que elimina un arco entre dos vertices del conjunto de arcos
+     * del grafo dado.
+     * @param Graph grafo, String vertice a , String vertice b
+     * @return void
+     */
     private void eliminarArco(Graph grafo, String a, String b) {
         grafo.eliminarArco(a, b);
     }
