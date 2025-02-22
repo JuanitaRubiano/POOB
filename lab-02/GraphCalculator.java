@@ -1,12 +1,12 @@
-/**import java.util.TreeMap;
+import java.util.TreeMap;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * GraphCalculator.java
- *
- * @author ESCUELA 2025-01
+ * 
+ * @author Carolina Cepeda, Juanita Rubiano
  */
-/**
 // con una sola muestra del grafo obtenemos todo el grafo.//
 
 public class GraphCalculator {
@@ -21,7 +21,35 @@ public class GraphCalculator {
         status = false;
     }
 
-    //Create a new variable
+    /**
+     * Método para obtener el último grafo en el TreeMap
+     */
+    public Graph getultGrafo() {
+        if (variables.isEmpty()) {
+            return null;
+        }
+        String llavefin = "";
+        for (String llave : variables.keySet()) {
+            llavefin = llave;
+        }
+        return variables.get(llavefin);
+    }
+
+    /**
+     * Get Variables
+     * 
+     * @return Treemap
+     */
+    public TreeMap<String, Graph> getVariables() {
+        return this.variables;
+    }
+
+    /**
+     * Crea una nueva variable
+     * 
+     * @param String nombre
+     * @return void
+     */
     public void create(String nombre) {
         variables.put(nombre, null);
     }
@@ -29,86 +57,133 @@ public class GraphCalculator {
     /**
      * Assign a graph to an existing variable
      * a := graph
-     *
+     * 
      * @param : String, String [], String[][]
      */
-  /**  public void assign(String nom_graph, String[] vertices, String[][] edges) {
+    public void assign(String nombre_graph, String[] vertices, String[][] edges) {
         Graph grafo = new Graph(vertices, edges);
 
-        variables.put(nom_graph, grafo);
+        variables.put(nombre_graph, grafo);
 
         status = true;
 
     }
 
-
-    //Assigns the value of a binary operation to a variable
-    // a = b op v*
-    //The operator characters are: '+' adding a edge between two vertices, '-' removing a edge between two vertex
-    // '?' checking if a graph contains the given vertices
-    // 'p' return the graph with a path that passes through all the vertices in the indicated order
+    /**
+     * 
+     * Assigns the value of a binary operation to a variable
+     * a = b op v*
+     * The operator characters are: '+' adding a edge between two vertices, '-'
+     * removing a edge between two vertex
+     * '?' checking if a graph contains the given vertices
+     * 'p' return the graph with a path that passes through all the vertices in the
+     * indicated order
+     */
     public void assignUnary(String a, String b, char op, String[] vertices) {
+
+        ultGrafo = getultGrafo();
+
+        switch (op) {
+            case '+':
+                insertarArco(ultGrafo, a, b);
+                break;
+            case '-':
+                eliminarArco(ultGrafo, a, b);
+                break;
+
+            case '?':
+                conjuntoPertence(ultGrafo, vertices);
+                break;
+
+            case 'p':
+                // mostrarCamino(ultGrafo, vertices);
+                break;
+
+            default:
+                System.out.println("Operador no reconocido: " + op);
+                break;
+
+        }
+
     }
 
-    //Assigns the value of a binary operation to a variable
+    // Assigns the value of a binary operation to a variable
     // a = b op c
-    //The operator characters are:  'u' union, 'i' intersection, 'd' difference, 'j' join
-
-
+    // The operator characters are: 'u' union, 'i' intersection, 'd' difference, 'j'
+    // join
     /**
+     * 
      * public void assignBinary(String a, String b, char op, String c){
      * if (op =="u")
      * {
      * Graph c = graph.union(a,b);
      * }
-     * <p>
+     * 
      * else if (op == "i")
      * {
      * Graph c = graph.intersection(a,b);
      * }
-     * <p>
+     * 
      * else if (op =="d")
      * {
      * Graph c = graph.diff(a,b);
      * }
-     * <p>
+     * 
      * else if (op =="j")
      * {
      * Graph c = graph.join(a,b);
      * }
-     * <p>
+     * 
      * }
      */
-    //Returns the graph with the edges in uppercase in alphabetical order.
-  /**
-    public String toString(String graph) {
+    /**
+     * Returns the graph with the edges in uppercase in alphabetical order.
+     */
+    public String toString(Graph graph) {
         return graph.toString();
     }
 
-    private void insertarArco(Graph graph, String edg) {
-        graph.insertarArco(edg);
+    private void insertarArco(Graph grafo, String a, String b) {
+        grafo.insertarArco(a, b);
 
     }
 
-    //private void eliminarArco(Graph graph, String edg) {
-        //graph.eliminarArco(edg);
-    //}
+    private void eliminarArco(Graph grafo, String a, String b) {
+        grafo.eliminarArco(a, b);
+    }
 
-    //private boolean conjuntoPertence(Graph grafo, ArrayList<String> vertices) {
-        //for (int i = 0; i < vertices.size(); i++) {
-            //String vertice = vertices.get(i);
-            //boolean booleano = grafo.enElGrafo(vertice);
-            //if (booleano == false) {
+    private boolean conjuntoPertence(Graph grafo, String[] vertices) {
+        ArrayList<String> lVertices = new ArrayList<>(Arrays.asList(vertices));
+
+        for (int i = 0; i < lVertices.size(); i++) {
+            String vertice = lVertices.get(i);
+            boolean booleano = grafo.enElGrafo(vertice);
+            if (booleano == false) {
                 return false;
             }
         }
         return true;
     }
 
+    // path es con un arraylist o con un graph???
+    /**
+     * private ArrayList<String> mostrarCamino(Graph grafo, String[] vertices){
+     * 
+     * ArrayList < String > caminoCompleto = new ArrayList<>();
+     * ArrayList <String> listaVertices= new ArrayList <> (Arrays.asList(vertices));
+     * 
+     * for (int i = 0; i < listaVertices.size() -1 ; i++ ){
+     * String inicio = listaVertices.get(i);
+     * String destino = listaVertices.get(i+1);
+     * ArrayList<String> subcamino = grafo.path(inicio, destino);
+     * caminoCompleto.addAll(subcamino);
+     * }
+     * return caminoCompleto;
+     * }
+     */
 
-    //If the last operation was successfully completed
+    // If the last operation was successfully completed
     public boolean ok() {
         return status;
     }
 }
-**/
