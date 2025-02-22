@@ -112,27 +112,31 @@ public class GraphCalculator {
     The operator characters are: 'u' union, 'i' intersection, 'd' difference, 'j'join
      */
     public void assignBinary(String a, String b, char op, String c){
-
-        this.assign(b,null,null);
+        this.assign(a,null,null);
+        this.assign(b, null, null);
         this.assign(c,null,null);
-
+    
+        Graph bgrafo = variables.get(b);
+        Graph cgrafo = variables.get(c);
+        Graph agrafo = null;
+        
         switch (op) {
-
+          
             case 'u':
 
-                Graph a = b.union(c);
+                agrafo = bgrafo.union(cgrafo);
                 break;
 
             case 'i':
-                a = ultGrafo.intersection(b,c);
+                agrafo = bgrafo.intersection(cgrafo);
                 break;
 
             case 'd':                
-                a = ultGrafo.diff(b,c);
+               agrafo = bgrafo.diferencia(cgrafo); 
                 break;
 
             case 'j':
-                a = ultGrafo.join(b,c);
+                agrafo = bgrafo.join(cgrafo);
                 break;
 
         }
@@ -179,7 +183,7 @@ public class GraphCalculator {
         return true;
     }
 
-    // path es con un arraylist o con un graph???
+ 
     /**
      * private ArrayList<String> mostrarCamino(Graph grafo, String[] vertices){
      * 
@@ -195,6 +199,7 @@ public class GraphCalculator {
      * return caminoCompleto;
      * }
      */
+
 
     // If the last operation was successfully completed
     public boolean ok() {

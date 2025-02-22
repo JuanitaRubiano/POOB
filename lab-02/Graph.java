@@ -55,14 +55,14 @@ public class Graph {
     }
 
     /**
-     * Retorna la canridad de vertices del grafo
+     * Retorna la cantidad de vertices del grafo
      */
     public int vertices() {
         return vertices.size();
     }
 
     /**
-     * Retorna la canridad de aristas del grafo
+     * Retorna la cantidad de aristas del grafo
      */
     public int edges() {
         return edges.size();
@@ -169,6 +169,20 @@ public class Graph {
         return this.edges;
     }
 
-
+    
+    
+    
+    
+    public Graph join(Graph g) {
+        return null;
+    }
+    
+    public Graph difference(Graph g) {
+        return null;
+    }
+    
+    public Graph intersection (Graph g) {
+        return null;
+    }
 
 }
