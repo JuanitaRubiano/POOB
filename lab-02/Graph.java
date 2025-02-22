@@ -114,7 +114,7 @@ public class Graph {
         return sb.toString().strip();
     }
 
-}
+
 
 // karo
 
@@ -142,4 +142,5 @@ public ArrayList<String> losVertices() {
 
 public ArrayList<ArrayList<String>> losEdges() {
     return this.edges;
+}
 }
