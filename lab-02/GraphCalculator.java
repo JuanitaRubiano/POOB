@@ -107,35 +107,41 @@ public class GraphCalculator {
 
     }
 
-    // Assigns the value of a binary operation to a variable
-    // a = b op c
-    // The operator characters are: 'u' union, 'i' intersection, 'd' difference, 'j'
-    // join
-    /**
-     * 
-     * public void assignBinary(String a, String b, char op, String c){
-     * if (op =="u")
-     * {
-     * Graph c = graph.union(a,b);
-     * }
-     * 
-     * else if (op == "i")
-     * {
-     * Graph c = graph.intersection(a,b);
-     * }
-     * 
-     * else if (op =="d")
-     * {
-     * Graph c = graph.diff(a,b);
-     * }
-     * 
-     * else if (op =="j")
-     * {
-     * Graph c = graph.join(a,b);
-     * }
-     * 
-     * }
+    /** Assigns the value of a binary operation to a variable
+    a = b op c
+    The operator characters are: 'u' union, 'i' intersection, 'd' difference, 'j'join
      */
+    public void assignBinary(String a, String b, char op, String c){
+        this.assign(a,null,null);
+        this.assign(b, null, null);
+        this.assign(c,null,null);
+    
+        Graph bgrafo = variables.get(b);
+        Graph cgrafo = variables.get(c);
+        Graph agrafo = null;
+        
+        switch (op) {
+          
+            case 'u':
+
+                agrafo = bgrafo.union(cgrafo);
+                break;
+
+            case 'i':
+                agrafo = bgrafo.intersection(cgrafo);
+                break;
+
+            case 'd':                
+               agrafo = bgrafo.difference(cgrafo); 
+                break;
+
+            case 'j':
+                agrafo = bgrafo.join(cgrafo);
+                break;
+
+        }
+    }
+
     /**
      * Returns the graph with the edges in uppercase in alphabetical order.
      */
@@ -143,11 +149,23 @@ public class GraphCalculator {
         return graph.toString();
     }
 
+    /**
+     * Función que inserta un arco entre dos vertices al conjunto de arcos
+     * del grafo dado.
+     * @param Graph grafo, String vertice a , String vertice b
+     * @return void
+     */
     private void insertarArco(Graph grafo, String a, String b) {
         grafo.insertarArco(a, b);
 
     }
 
+    /**
+     * Función que elimina un arco entre dos vertices del conjunto de arcos
+     * del grafo dado.
+     * @param Graph grafo, String vertice a , String vertice b
+     * @return void
+     */
     private void eliminarArco(Graph grafo, String a, String b) {
         grafo.eliminarArco(a, b);
     }
@@ -165,7 +183,7 @@ public class GraphCalculator {
         return true;
     }
 
-    // path es con un arraylist o con un graph???
+ 
     /**
      * private ArrayList<String> mostrarCamino(Graph grafo, String[] vertices){
      * 
@@ -181,6 +199,7 @@ public class GraphCalculator {
      * return caminoCompleto;
      * }
      */
+
 
     // If the last operation was successfully completed
     public boolean ok() {

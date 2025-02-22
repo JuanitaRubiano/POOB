@@ -99,6 +99,7 @@ public class GraphCalculatorTest {
         assertTrue(vertices_pr.containsAll(Arrays.asList(vertices)));
     }
 
+    
     /**
      * Tears down the test fixture.
      *
