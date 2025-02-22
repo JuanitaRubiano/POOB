@@ -111,35 +111,36 @@ public class GraphCalculator {
     // a = b op c
     // The operator characters are: 'u' union, 'i' intersection, 'd' difference, 'j'
     // join
-    /**
-     * 
-     * public void assignBinary(String a, String b, char op, String c){
-     * if (op =="u")
-     * {
-     * Graph c = graph.union(a,b);
-     * }
-     * 
-     * else if (op == "i")
-     * {
-     * Graph c = graph.intersection(a,b);
-     * }
-     * 
-     * else if (op =="d")
-     * {
-     * Graph c = graph.diff(a,b);
-     * }
-     * 
-     * else if (op =="j")
-     * {
-     * Graph c = graph.join(a,b);
-     * }
-     * 
-     * }
-     */
-    /**
-     * Returns the graph with the edges in uppercase in alphabetical order.
-     */
-    public String toString(Graph graph) {
+
+    public void assignBinary(String a, String b, char op, String c){
+        
+        ultGrafo = getultGrafo();
+
+        switch (op) {
+
+            case 'u':
+
+                 a = ultGrafo.union(b,c);
+                break;
+
+            case 'i':
+                 a = ultGrafo.intersection(b,c);
+                break;
+
+            case 'd':                
+                 a = ultGrafo.diff(b,c);
+                break;
+
+            case 'j':
+                 a = ultGrafo.join(b,c);
+                break;
+
+        }
+    }
+        /**
+         * Returns the graph with the edges in uppercase in alphabetical order.
+         */
+        public String toString(Graph graph) {
         return graph.toString();
     }
 
