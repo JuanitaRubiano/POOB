@@ -132,7 +132,7 @@ public class GraphCalculator {
                 break;
 
             case 'd':                
-               agrafo = bgrafo.diferencia(cgrafo); 
+               agrafo = bgrafo.difference(cgrafo); 
                 break;
 
             case 'j':
