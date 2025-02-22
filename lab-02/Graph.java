@@ -32,7 +32,6 @@ public class Graph {
         }
     }
 
-
     public Graph path(String start, String end) {
         return null;
     }
@@ -46,7 +45,6 @@ public class Graph {
         return null;
     }
 
-
     private boolean containsEdge(ArrayList<ArrayList<String>> edgeList, ArrayList<String> edge) {
         for (ArrayList<String> e : edgeList) {
             if (e.size() == edge.size() && e.containsAll(edge) && edge.containsAll(e)) {
@@ -55,7 +53,6 @@ public class Graph {
         }
         return false;
     }
-
 
     /**
      * Retorna la canridad de vertices del grafo
@@ -82,13 +79,13 @@ public class Graph {
         return false;
     }
 
-
-    //Only arcs in space-separated tuples. The vertices are capitalized. The edges must always be in alphabetical order.
-    //For example, (A, B) (C, D)
+    // Only arcs in space-separated tuples. The vertices are capitalized. The edges
+    // must always be in alphabetical order.
+    // For example, (A, B) (C, D)
     public static void main(String[] args) {
         // Grafo de ejemplo
-        String[] vertices = {"A", "B", "C", "D", "E"};
-        String[][] edges = {{"A", "B"}, {"B", "C"}, {"C", "D"}, {"D", "E"}, {"B", "D"}};
+        String[] vertices = { "A", "B", "C", "D", "E" };
+        String[][] edges = { { "A", "B" }, { "B", "C" }, { "C", "D" }, { "D", "E" }, { "B", "D" } };
 
         Graph graph = new Graph(vertices, edges);
         System.out.println("Grafo original:");
@@ -117,26 +114,33 @@ public class Graph {
         return sb.toString().strip();
     }
 
-}
 
 
 // karo
 
-//public void insertarArco(String edg) {
-//this.edges.add(new ArrayList<>(Arrays.asList(edg)));
-// }
+public void insertarArco(String a, String b) {
+    this.edges.add(new ArrayList<>(Arrays.asList(a, b)));
+}
 
-//public void eliminarArco(String edg) {
-//for (int i = 0; i < edges.size(); i++) {
-//ArrayList<String> sublista = edges.get(i);
-//if (sublista.contains(edg)) {
-//edges.remove(i);
-//i--;
-// }
-// }
-//}
+public void eliminarArco(String a, String b) {
+    for (int i = 0; i < edges.size(); i++) {
+        ArrayList<String> sublista = edges.get(i);
+        if (sublista.equals(Arrays.asList(a, b)) || sublista.equals(Arrays.asList(b, a))) {
+            edges.remove(i);
+            i--;
+        }
+    }
+}
 
-//public boolean enElGrafo(String edg) {
-// return this.contains(edg);
-// }
+public boolean enElGrafo(String vertice) {
+    return vertices.contains(vertice);
+}
 
+public ArrayList<String> losVertices() {
+    return this.vertices;
+}
+
+public ArrayList<ArrayList<String>> losEdges() {
+    return this.edges;
+}
+}
