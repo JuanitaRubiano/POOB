@@ -88,6 +88,17 @@ public class GraphCalculatorTest {
 
     }
 
+    @Test
+    public void ShouldConjuntoPertenece() {
+        GraphCalculator calculadora = new GraphCalculator();
+        String[] vertices = { "A", "M", "O", "R" };
+        String[][] edges = { { "A", "M" }, { "M", "O" }, { "O", "R" } };
+        calculadora.assign("pruebae", vertices, edges);
+        calculadora.assignUnary("A", "M", '?', vertices);
+        List<String> vertices_pr = calculadora.getVariables().get("pruebae").losVertices();
+        assertTrue(vertices_pr.containsAll(Arrays.asList(vertices)));
+    }
+
     /**
      * Tears down the test fixture.
      *
