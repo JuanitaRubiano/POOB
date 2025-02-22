@@ -153,18 +153,22 @@ public class Graph {
         return vertices.contains(vertice);
     }
 
+    /**
+     * Función que retorna los vertices del grafo
+     * @return ArrayList<String>
+     */
     public ArrayList<String> losVertices() {
         return this.vertices;
     }
 
+    /**
+     * Función que retorna los arcos del grafo
+     * @return ArrayList<ArrayList<String>>
+     */
     public ArrayList<ArrayList<String>> losEdges() {
         return this.edges;
     }
 
-    public Graph unite(String b, String c)
-    {
 
-        return null;
-    }
 
 }

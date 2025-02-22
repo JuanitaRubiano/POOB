@@ -113,13 +113,14 @@ public class GraphCalculator {
      */
     public void assignBinary(String a, String b, char op, String c){
 
-        ultGrafo = getultGrafo();
+        this.assign(b,null,null);
+        this.assign(c,null,null);
 
         switch (op) {
 
             case 'u':
 
-                Graph a = ultGrafo.unite(b,c);
+                Graph a = b.union(c);
                 break;
 
             case 'i':
@@ -155,7 +156,7 @@ public class GraphCalculator {
 
     }
 
-     /**
+    /**
      * Función que elimina un arco entre dos vertices del conjunto de arcos
      * del grafo dado.
      * @param Graph grafo, String vertice a , String vertice b
