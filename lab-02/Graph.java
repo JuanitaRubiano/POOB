@@ -252,10 +252,37 @@ public class Graph {
 
     /**
      * Método que calcula la junta de dos grafos.
-     *     * @return un grafo que es el resultado de la junta entre el grafo actual y el grafo g
+     * @return un grafo que es el resultado de la junta entre el grafo actual y el grafo g
      */
     public Graph join(Graph g) {
-        return null;
+        ArrayList <String> verticesJoin = new ArrayList <>();
+        ArrayList<ArrayList<String>> arcosJoin = new ArrayList <>();
+
+        for (String vertice : this.vertices){
+            if (!g.losVertices().contains(vertice)){
+                verticesJoin.add(vertice);
+            }
+
+        }
+
+        for ( ArrayList <String> edge: this.edges){
+            if (!g.losEdges().contains(edge)){
+                arcosJoin.add(edge);
+            }
+        }
+        
+        for (String ver1 : this.vertices){
+            for (String ver2 : g.losVertices()){
+              if (!this.vertices.contains(ver2)){
+                ArrayList<String> nuevoArc = new ArrayList <>();
+                nuevoArc.add(ver1);
+                nuevoArc.add(ver2);
+                arcosJoin.add(nuevoArc);
+                }  
+            }
+        }
+
+        return new Graph (verticesJoin,arcosJoin);
     }
 
     /**

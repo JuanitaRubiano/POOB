@@ -94,7 +94,7 @@ public class GraphCalculator {
                 break;
 
             case '?':
-                conjuntoPertence(ultGrafo, vertices);
+                conjuntoPertenece(ultGrafo, vertices);
                 break;
 
             case 'p':
@@ -170,7 +170,7 @@ public class GraphCalculator {
         grafo.eliminarArco(a, b);
     }
 
-    private boolean conjuntoPertence(Graph grafo, String[] vertices) {
+    private boolean conjuntoPertenece(Graph grafo, String[] vertices) {
         ArrayList<String> lVertices = new ArrayList<>(Arrays.asList(vertices));
 
         for (int i = 0; i < lVertices.size(); i++) {
@@ -183,7 +183,8 @@ public class GraphCalculator {
         return true;
     }
 
-    /**
+    /** No se lleva a cabo
+     * 
      * private ArrayList<String> mostrarCamino(Graph grafo, String[] vertices){
      * 
      * ArrayList < String > caminoCompleto = new ArrayList<>();

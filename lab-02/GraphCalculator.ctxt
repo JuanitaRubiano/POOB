@@ -8,10 +8,10 @@ comment10.params=grafo\ a\ b
 comment10.target=void\ eliminarArco(Graph,\ java.lang.String,\ java.lang.String)
 comment10.text=\r\n\ Funci\u00F3n\ que\ elimina\ un\ arco\ entre\ dos\ vertices\ del\ conjunto\ de\ arcos\r\n\ del\ grafo\ dado.\r\n\ @param\ Graph\ grafo,\ String\ vertice\ a\ ,\ String\ vertice\ b\r\n\ @return\ void\r\n
 comment11.params=grafo\ vertices
-comment11.target=boolean\ conjuntoPertence(Graph,\ java.lang.String[])
+comment11.target=boolean\ conjuntoPertenece(Graph,\ java.lang.String[])
 comment12.params=graf1\ graf2
 comment12.target=boolean\ sameGraphExactly(Graph,\ Graph)
-comment12.text=\r\n\ private\ ArrayList<String>\ mostrarCamino(Graph\ grafo,\ String[]\ vertices){\r\n\ \r\n\ ArrayList\ <\ String\ >\ caminoCompleto\ \=\ new\ ArrayList<>();\r\n\ ArrayList\ <String>\ listaVertices\=\ new\ ArrayList\ <>\ (Arrays.asList(vertices));\r\n\ \r\n\ for\ (int\ i\ \=\ 0;\ i\ <\ listaVertices.size()\ -1\ ;\ i++\ ){\r\n\ String\ inicio\ \=\ listaVertices.get(i);\r\n\ String\ destino\ \=\ listaVertices.get(i+1);\r\n\ ArrayList<String>\ subcamino\ \=\ grafo.path(inicio,\ destino);\r\n\ caminoCompleto.addAll(subcamino);\r\n\ }\r\n\ return\ caminoCompleto;\r\n\ }\r\n
+comment12.text=\ No\ se\ lleva\ a\ cabo\r\n\ \r\n\ private\ ArrayList<String>\ mostrarCamino(Graph\ grafo,\ String[]\ vertices){\r\n\ \r\n\ ArrayList\ <\ String\ >\ caminoCompleto\ \=\ new\ ArrayList<>();\r\n\ ArrayList\ <String>\ listaVertices\=\ new\ ArrayList\ <>\ (Arrays.asList(vertices));\r\n\ \r\n\ for\ (int\ i\ \=\ 0;\ i\ <\ listaVertices.size()\ -1\ ;\ i++\ ){\r\n\ String\ inicio\ \=\ listaVertices.get(i);\r\n\ String\ destino\ \=\ listaVertices.get(i+1);\r\n\ ArrayList<String>\ subcamino\ \=\ grafo.path(inicio,\ destino);\r\n\ caminoCompleto.addAll(subcamino);\r\n\ }\r\n\ return\ caminoCompleto;\r\n\ }\r\n
 comment13.params=
 comment13.target=boolean\ ok()
 comment13.text=\r\n\ Metodo\ que\ revisa\ q\ todas\ las\ operaciones\ se\ realizaron\ correctamente.\r\n\ @return\ boolean\r\n
