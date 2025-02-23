@@ -129,7 +129,7 @@ public class GraphCalculator {
                 break;
 
             case 'd':                
-               //agrafo = bgrafo.difference(cgrafo); 
+               agrafo = bgrafo.difference(cgrafo); 
                 break;
 
             case 'j':
@@ -215,7 +215,7 @@ public class GraphCalculator {
         }        
         return true;
     }
-
+    
     // If the last operation was successfully completed
     public boolean ok() {
         return status;

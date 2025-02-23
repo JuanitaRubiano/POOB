@@ -222,13 +222,19 @@ public class Graph {
     public Graph difference(Graph g) {
         ArrayList <String> verticesDif = new ArrayList <>();
         ArrayList<ArrayList<String>> arcosDif = new ArrayList <>();
+        
         for (String vertice : this.vertices){
              if (!g.losVertices().contains(vertice)){
              verticesDif.add(vertice);
              }
          
             }
-         // conversión de tipos de variables
+        
+        for ( ArrayList <String> edge: this.edges){
+            if (!g.losEdges().contains(edge)){
+                arcosDif.add(edge);
+            }
+        }
     
         return new Graph (verticesDif,arcosDif);
           }

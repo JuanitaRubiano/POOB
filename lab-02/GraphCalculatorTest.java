@@ -106,6 +106,12 @@ public class GraphCalculatorTest {
     
     @Test
     public void shouldUnion(){
+        GraphCalculator calculadora = new GraphCalculator();
+        calculadora.assign("b",new String[]{"a","b","c"},new String [][]{{"a","b"},{"b","c"}});
+        calculadora.assign("c",new String[]{"a","b","d"},new String [][]{{"a","b"},{"b","d"}});
+        Graph grafoEsperado = new Graph(new String[] {"a","b","c","d"}, new String[][] {{"a","b"},{"b","c"},{"b","d"}}) ;
+        assertEquals(calculadora.assignBinary("a","b",'u',"c"),grafoEsperado);
+       
     }
     
     @Test
@@ -123,6 +129,13 @@ public class GraphCalculatorTest {
     
     @Test
     public void shouldDifference(){
+         GraphCalculator calculadora = new GraphCalculator();
+        calculadora.assign("b",new String[]{"a","b","c"},new String [][]{{"a","b"},{"b","c"}});
+        calculadora.assign("c",new String[]{"d","e","f","b"},new String [][]{{"d","e"},{"b","d"},{"b","b"}});
+        Graph grafoEspe = new Graph(new String[] {"a","b","c"}, new String[][] {{"a","b"},{"b","c"}}) ;
+        Graph generatedGraph = calculadora.assignBinary("a", "b", 'd', "c");
+    
+        assertEquals(calculadora.assignBinary("a","b",'d',"c"), grafoEspe);
     }
     
     /**
