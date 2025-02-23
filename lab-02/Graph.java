@@ -32,14 +32,16 @@ public class Graph {
             }
         }
     }
-    
-    public Graph ( ArrayList<String> vertices,ArrayList<ArrayList<String>> edges){
-        this.vertices = vertices.stream().map((String s)->s.toUpperCase()).collect(Collectors.toCollection(ArrayList::new));
+
+    public Graph(ArrayList<String> vertices, ArrayList<ArrayList<String>> edges) {
+        this.vertices = vertices.stream().map((String s) -> s.toUpperCase())
+                .collect(Collectors.toCollection(ArrayList::new));
         ArrayList<ArrayList<String>> newEdges = new ArrayList<ArrayList<String>>();
-        for (ArrayList<String> edge: edges){
-              newEdges.add(edge.stream().map((String s)->s.toUpperCase()).collect(Collectors.toCollection(ArrayList::new)));
+        for (ArrayList<String> edge : edges) {
+            newEdges.add(
+                    edge.stream().map((String s) -> s.toUpperCase()).collect(Collectors.toCollection(ArrayList::new)));
         }
-        this.edges= newEdges;  
+        this.edges = newEdges;
     }
 
     public Graph path(String start, String end) {
@@ -54,22 +56,22 @@ public class Graph {
     public Graph union(Graph g) {
         ArrayList<String> unionVertices = new ArrayList<>();
         // union vertices sin repertir
-        for(String vertice :this.vertices){
+        for (String vertice : this.vertices) {
             unionVertices.add(vertice);
         }
-   
-        for (String vertice:g.vertices){
-            if(!this.vertices.contains(vertice)){
+
+        for (String vertice : g.vertices) {
+            if (!this.vertices.contains(vertice)) {
                 unionVertices.add(vertice);
             }
         }
-        //unir aristas sin duplicar
+        // unir aristas sin duplicar
         ArrayList<ArrayList<String>> unionEdges = new ArrayList<>();
-        for (ArrayList<String> edge:this.edges){
+        for (ArrayList<String> edge : this.edges) {
             unionEdges.add(edge);
         }
-        for(ArrayList<String> edge:g.edges){
-            if(!this.edges.contains(edge)){
+        for (ArrayList<String> edge : g.edges) {
+            if (!this.edges.contains(edge)) {
                 unionEdges.add(edge);
             }
         }
@@ -117,8 +119,9 @@ public class Graph {
         // Grafo de ejemplo
         String[] vertices = { "A", "B", "C", "D", "E" };
         String[][] edges = { { "A", "B" }, { "B", "C" }, { "C", "D" }, { "D", "E" }, { "B", "D" } };
-        String[] vertices1 = { "A", "B", "C", "D", "E" ,"f"};
-        String[][] edges1 = { { "A", "B" }, { "B", "C" }, { "C", "D" }, { "D", "E" }, { "B", "D" },{"f","a"} };    
+        String[] vertices1 = { "A", "B", "C", "D", "E", "f" };
+        String[][] edges1 = { { "A", "B" }, { "B", "C" }, { "C", "D" }, { "D", "E" }, { "B", "D" }, { "f", "a" } };
+
         Graph graph = new Graph(vertices, edges);
         System.out.println("Grafo original:");
         System.out.println(graph);
@@ -126,16 +129,15 @@ public class Graph {
         System.out.println("Grafo original:");
         System.out.println(graph2);
         System.out.println(graph2.union(graph));
+
         // Obtener un camino desde A hasta E
-        
-        Graph pathGraph = graph.path("A", "E");
-        if (pathGraph != null) {
-            System.out.println("\nCamino encontrado desde A hasta E:");
-            System.out.println(pathGraph);
-        } else {
-            System.out.println("\nNo se encontró camino desde A hasta E.");
-        }
-    
+        // Graph pathGraph = graph.path("A", "E");
+        // if (pathGraph != null) {
+        // System.out.println("\nCamino encontrado desde A hasta E:");
+        // System.out.println(pathGraph);
+        // } else {
+        // System.out.println("\nNo se encontró camino desde A hasta E.");
+        // }
     }
 
     @Override
@@ -152,10 +154,11 @@ public class Graph {
     }
 
     // Adicionales
-    
+
     /**
      * Función que inserta un arco entre dos vertices al conjunto de arcos
      * del grafo.
+     * 
      * @param String vertice a , String vertice b
      * @return void
      */
@@ -166,6 +169,7 @@ public class Graph {
     /**
      * Función que elimina un arco entre dos vertices del conjunto de arcos
      * del grafo.
+     * 
      * @param String vertice a , String vertice b
      * @return void
      */
@@ -179,10 +183,10 @@ public class Graph {
         }
     }
 
-    
     /**
      * Función que verifica si un vértice dado es parte de
      * el conjunto de vertices del grafo
+     * 
      * @param String vertices
      * @return boolean
      */
@@ -192,6 +196,7 @@ public class Graph {
 
     /**
      * Función que retorna los vertices del grafo
+     * 
      * @return ArrayList<String>
      */
     public ArrayList<String> losVertices() {
@@ -200,64 +205,64 @@ public class Graph {
 
     /**
      * Función que retorna los arcos del grafo
+     * 
      * @return ArrayList<ArrayList<String>>
      */
     public ArrayList<ArrayList<String>> losEdges() {
         return this.edges;
     }
 
-    
     public Graph join(Graph g) {
         return null;
     }
-    
+
     /**
      *
-     
-    public Graph difference(Graph g) {
-        ArrayList <String> verticesDif = new ArrayList <>();
-        ArrayList<ArrayList<String>> arcosDif = new ArrayList <>();
-        for (String vertice : this.vertices){
-        if (!g.losVertices().contains(vertice)){
-            verticesDif.add(vertice);
-        }    
-        
-        
-        // conversión de tipos de variables
-        String[] verticesDifStr = verticesDif.toArray(new String[0]);
-        
-        String[][] arcosDifStr = new String [arcosDif.size()][];
-        for (int i=0; i< arcosDif.size() ; i++){
-            arcosDifStr[i] = arcosDif.get(i).toArray(new String[0]);
-        }
-        }
-        return new Graph (verticesDifStr,arcosDif);
-    }
-    */
-    public Graph intersection (Graph g) {
-        ArrayList <String> verComunes = new ArrayList<>();
-        ArrayList <ArrayList<String>> arComunes = new ArrayList<>();
-        
-        for (String vertice : this.vertices){
-            if (g.losVertices().contains(vertice)){
+     * 
+     * public Graph difference(Graph g) {
+     * ArrayList <String> verticesDif = new ArrayList <>();
+     * ArrayList<ArrayList<String>> arcosDif = new ArrayList <>();
+     * for (String vertice : this.vertices){
+     * if (!g.losVertices().contains(vertice)){
+     * verticesDif.add(vertice);
+     * }
+     * 
+     * 
+     * // conversión de tipos de variables
+     * String[] verticesDifStr = verticesDif.toArray(new String[0]);
+     * 
+     * String[][] arcosDifStr = new String [arcosDif.size()][];
+     * for (int i=0; i< arcosDif.size() ; i++){
+     * arcosDifStr[i] = arcosDif.get(i).toArray(new String[0]);
+     * }
+     * }
+     * return new Graph (verticesDifStr,arcosDif);
+     * }
+     */
+    public Graph intersection(Graph g) {
+        ArrayList<String> verComunes = new ArrayList<>();
+        ArrayList<ArrayList<String>> arComunes = new ArrayList<>();
+
+        for (String vertice : this.vertices) {
+            if (g.losVertices().contains(vertice)) {
                 verComunes.add(vertice);
             }
         }
 
-        for (ArrayList <String> edge : this.edges){
-            if (g.losEdges().contains(edge)){
+        for (ArrayList<String> edge : this.edges) {
+            if (g.losEdges().contains(edge)) {
                 arComunes.add(edge);
             }
         }
-        
+
         // conversión de tipo de variables
         String[] verComunesStr = verComunes.toArray(new String[0]);
-        
-        String[][] arComunesStr = new String [arComunes.size()][];
-        for (int i=0; i< arComunes.size() ; i++){
+
+        String[][] arComunesStr = new String[arComunes.size()][];
+        for (int i = 0; i < arComunes.size(); i++) {
             arComunesStr[i] = arComunes.get(i).toArray(new String[0]);
         }
-        return new Graph(verComunesStr,arComunesStr);
+        return new Graph(verComunesStr, arComunesStr);
     }
 
 }
