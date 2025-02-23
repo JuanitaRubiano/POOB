@@ -25,6 +25,8 @@ public class GraphCalculatorTest {
 
     }
 
+    //Ciclo1
+    
     @Test
     public void ShouldcreateCalculator() {
         GraphCalculator calculadora = new GraphCalculator();
@@ -45,8 +47,7 @@ public class GraphCalculatorTest {
                         new ArrayList<>(Arrays.asList("A", "M")),
                         new ArrayList<>(Arrays.asList("M", "E")),
                         new ArrayList<>(Arrays.asList("E", "N")),
-                        new ArrayList<>(Arrays.asList("N", "A")))); // debido a cambios de variables internamente en
-                                                                    // grafos
+                        new ArrayList<>(Arrays.asList("N", "A")))); 
 
         List<String> listVertices = Arrays.asList(vertices);
 
@@ -64,6 +65,9 @@ public class GraphCalculatorTest {
         Graph grafo = new Graph (vertices,edges);
         assertEquals(data, calculator.toString(grafo));
     }
+    
+    //Ciclo 2
+    
     @Test
     public void ShouldinsertarArco() {
         GraphCalculator calculadora = new GraphCalculator();
@@ -103,6 +107,7 @@ public class GraphCalculatorTest {
         assertTrue(vertices_pr.containsAll(Arrays.asList(vertices)));
     }
 
+    // Ciclo 3
     
     @Test
     public void shouldUnion(){
@@ -110,7 +115,7 @@ public class GraphCalculatorTest {
         calculadora.assign("b",new String[]{"a","b","c"},new String [][]{{"a","b"},{"b","c"}});
         calculadora.assign("c",new String[]{"a","b","d"},new String [][]{{"a","b"},{"b","d"}});
         Graph grafoEsperado = new Graph(new String[] {"a","b","c","d"}, new String[][] {{"a","b"},{"b","c"},{"b","d"}}) ;
-        assertEquals(calculadora.assignBinary("a","b",'u',"c"),grafoEsperado);
+        assertEquals(grafoEsperado,calculadora.assignBinary("a","b",'u',"c"));
        
     }
     
@@ -120,11 +125,19 @@ public class GraphCalculatorTest {
         calculadora.assign("b",new String[]{"a","b","c"},new String [][]{{"a","b"},{"b","c"}});
         calculadora.assign("c",new String[]{"a","b","d"},new String [][]{{"a","b"},{"b","d"}});
         Graph grafoEsperado = new Graph(new String[] {"a","b"}, new String[][] {{"a","b"}}) ;
-        assertTrue(calculadora.sameGraphExactly (calculadora.assignBinary("a","b",'i',"c"),grafoEsperado));
+        assertTrue(calculadora.sameGraphExactly (grafoEsperado,calculadora.assignBinary("a","b",'i',"c")));
     }
     
     @Test
     public void shouldJoin(){
+        GraphCalculator calculadora = new GraphCalculator();
+        calculadora.assign ("b",new String []{"a","b",}, new String [][] {{"a","b"},{"b","b"}});
+        calculadora.assign("c",new String[] {"x","y"}, new String[][]{{"x","y"}});
+        Graph grafoEsperado = new Graph(
+            new String[]{"a","b","x","y"}, new String[][]{ {"a","b"},{"b","b"},{"x","y"},
+            {"a","x"},{"a","y"},{"b","x"},{"b","y"} }
+            );
+            assertEquals(grafoEsperado,calculadora.assignBinary("a","b",'j',"c"));
     }
     
     @Test
@@ -135,7 +148,7 @@ public class GraphCalculatorTest {
         Graph grafoEspe = new Graph(new String[] {"a","b","c"}, new String[][] {{"a","b"},{"b","c"}}) ;
         Graph generatedGraph = calculadora.assignBinary("a", "b", 'd', "c");
     
-        assertEquals(calculadora.assignBinary("a","b",'d',"c"), grafoEspe);
+        assertEquals(grafoEspe,calculadora.assignBinary("a","b",'d',"c"));
     }
     
     /**

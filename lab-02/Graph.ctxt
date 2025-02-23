@@ -2,6 +2,7 @@
 comment0.target=Graph
 comment1.params=vertices\ edges
 comment1.target=Graph(java.lang.String[],\ java.lang.String[][])
+comment1.text=\r\n\ Constructor\ que\ inicializa\ el\ grafo\ con\ un\ conjunto\ de\ v\u00E9rtices\ y\ aristas.\r\n\ Convierte\ todos\ los\ nombres\ de\ v\u00E9rtices\ a\ may\u00FAsculas\ y\ elimina\ duplicados.\r\n\r\n\ @param\ vertices\ Lista\ de\ v\u00E9rtices\r\n\ @param\ edges\ Matriz\ de\ aristas,\ donde\ cada\ arista\ es\ un\ par\ de\ v\u00E9rtices\r\n
 comment10.params=args
 comment10.target=void\ main(java.lang.String[])
 comment11.params=
@@ -29,6 +30,7 @@ comment19.params=g
 comment19.target=Graph\ intersection(Graph)
 comment2.params=vertices\ edges
 comment2.target=Graph(java.util.ArrayList,\ java.util.ArrayList)
+comment2.text=\r\n\ *\ Se\ hizo\ una\ sobre\ escritura\ de\ constructor\ para\ ser\ utilizado\ en\ el\ metodo\ de\ Union.\r\n\ Se\ utilizo\ programacion\ funcional\r\n\ Constructor\ que\ recibe\ listas\ de\ v\u00E9rtices\ y\ aristas.\r\n\ Convierte\ los\ nombres\ a\ may\u00FAsculas\ y\ elimina\ duplicados.\r\n\r\n\ @param\ vertices\ Lista\ de\ v\u00E9rtices\r\n\ @param\ edges\ Lista\ de\ aristas\r\n
 comment3.params=start\ end
 comment3.target=Graph\ path(java.lang.String,\ java.lang.String)
 comment4.params=vertex

@@ -6,6 +6,13 @@ public class Graph {
     private ArrayList<String> vertices;
     private ArrayList<ArrayList<String>> edges;
 
+    /**
+     * Constructor que inicializa el grafo con un conjunto de vértices y aristas.
+     * Convierte todos los nombres de vértices a mayúsculas y elimina duplicados.
+     *
+     * @param vertices Lista de vértices
+     * @param edges Matriz de aristas, donde cada arista es un par de vértices
+     */
     public Graph(String[] vertices, String[][] edges) {
         this.vertices = new ArrayList<>();
 
@@ -33,6 +40,15 @@ public class Graph {
         }
     }
 
+    /**
+      * * Se hizo una sobre escritura de constructor para ser utilizado en el metodo de Union.
+         * Se utilizo programacion funcional
+         * Constructor que recibe listas de vértices y aristas.
+         * Convierte los nombres a mayúsculas y elimina duplicados.
+         *
+         * @param vertices Lista de vértices
+         * @param edges Lista de aristas
+     */
     public Graph(ArrayList<String> vertices, ArrayList<ArrayList<String>> edges) {
         this.vertices = vertices.stream().map((String s) -> s.toUpperCase())
                 .collect(Collectors.toCollection(ArrayList::new));
@@ -256,5 +272,7 @@ public class Graph {
         }
         return new Graph(verComunes, arComunes);
     }
+    
+    
 
 }
