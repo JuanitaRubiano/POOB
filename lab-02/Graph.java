@@ -221,7 +221,29 @@ public class Graph {
     }
     
     public Graph intersection (Graph g) {
-        return null;
+        ArrayList <String> verComunes = new ArrayList<>();
+        ArrayList <ArrayList<String>> arComunes = new ArrayList<>();
+        
+        for (String vertice : this.vertices){
+            if (g.losVertices().contains(vertice)){
+                verComunes.add(vertice);
+            }
+        }
+
+        for (ArrayList <String> edge : this.edges){
+            if (g.losEdges().contains(edge)){
+                arComunes.add(edge);
+            }
+        }
+        
+        // conversión de tipo de variables
+        String[] verComunesStr = verComunes.toArray(new String[0]);
+        
+        String[][] arComunesStr = new String [arComunes.size()][];
+        for (int i=0; i< arComunes.size() ; i++){
+            arComunesStr[i] = arComunes.get(i).toArray(new String[0]);
+        }
+        return new Graph(verComunesStr,arComunesStr);
     }
 
 }

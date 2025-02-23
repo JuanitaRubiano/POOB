@@ -111,11 +111,8 @@ public class GraphCalculator {
     a = b op c
     The operator characters are: 'u' union, 'i' intersection, 'd' difference, 'j'join
      */
-    public void assignBinary(String a, String b, char op, String c){
-        this.assign(a,null,null);
-        this.assign(b, null, null);
-        this.assign(c,null,null);
-    
+    public Graph assignBinary(String a, String b, char op, String c){
+       
         Graph bgrafo = variables.get(b);
         Graph cgrafo = variables.get(c);
         Graph agrafo = null;
@@ -140,6 +137,7 @@ public class GraphCalculator {
                 break;
 
         }
+        return agrafo;
     }
 
     /**
@@ -200,9 +198,15 @@ public class GraphCalculator {
      * }
      */
 
+    public boolean sameGraph(Graph graf1,Graph graf2){
+        
+        return true;
+    }
 
     // If the last operation was successfully completed
     public boolean ok() {
         return status;
     }
 }
+
+

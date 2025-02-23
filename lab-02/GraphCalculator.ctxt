@@ -8,9 +8,11 @@ comment10.target=void\ eliminarArco(Graph,\ java.lang.String,\ java.lang.String)
 comment10.text=\r\n\ Funci\u00F3n\ que\ elimina\ un\ arco\ entre\ dos\ vertices\ del\ conjunto\ de\ arcos\r\n\ del\ grafo\ dado.\r\n\ @param\ Graph\ grafo,\ String\ vertice\ a\ ,\ String\ vertice\ b\r\n\ @return\ void\r\n
 comment11.params=grafo\ vertices
 comment11.target=boolean\ conjuntoPertence(Graph,\ java.lang.String[])
-comment12.params=
-comment12.target=boolean\ ok()
+comment12.params=graf1\ graf2
+comment12.target=boolean\ sameGraph(Graph,\ Graph)
 comment12.text=\r\n\ private\ ArrayList<String>\ mostrarCamino(Graph\ grafo,\ String[]\ vertices){\r\n\ \r\n\ ArrayList\ <\ String\ >\ caminoCompleto\ \=\ new\ ArrayList<>();\r\n\ ArrayList\ <String>\ listaVertices\=\ new\ ArrayList\ <>\ (Arrays.asList(vertices));\r\n\ \r\n\ for\ (int\ i\ \=\ 0;\ i\ <\ listaVertices.size()\ -1\ ;\ i++\ ){\r\n\ String\ inicio\ \=\ listaVertices.get(i);\r\n\ String\ destino\ \=\ listaVertices.get(i+1);\r\n\ ArrayList<String>\ subcamino\ \=\ grafo.path(inicio,\ destino);\r\n\ caminoCompleto.addAll(subcamino);\r\n\ }\r\n\ return\ caminoCompleto;\r\n\ }\r\n
+comment13.params=
+comment13.target=boolean\ ok()
 comment2.params=
 comment2.target=Graph\ getultGrafo()
 comment2.text=\r\n\ M\u00E9todo\ para\ obtener\ el\ \u00FAltimo\ grafo\ en\ el\ TreeMap\r\n
@@ -27,7 +29,7 @@ comment6.params=a\ b\ op\ vertices
 comment6.target=void\ assignUnary(java.lang.String,\ java.lang.String,\ char,\ java.lang.String[])
 comment6.text=\r\n\ \r\n\ Assigns\ the\ value\ of\ a\ binary\ operation\ to\ a\ variable\r\n\ a\ \=\ b\ op\ v*\r\n\ The\ operator\ characters\ are\:\ '+'\ adding\ a\ edge\ between\ two\ vertices,\ '-'\r\n\ removing\ a\ edge\ between\ two\ vertex\r\n\ '?'\ checking\ if\ a\ graph\ contains\ the\ given\ vertices\r\n\ 'p'\ return\ the\ graph\ with\ a\ path\ that\ passes\ through\ all\ the\ vertices\ in\ the\r\n\ indicated\ order\r\n
 comment7.params=a\ b\ op\ c
-comment7.target=void\ assignBinary(java.lang.String,\ java.lang.String,\ char,\ java.lang.String)
+comment7.target=Graph\ assignBinary(java.lang.String,\ java.lang.String,\ char,\ java.lang.String)
 comment7.text=\ Assigns\ the\ value\ of\ a\ binary\ operation\ to\ a\ variable\r\n\ \ \ \ a\ \=\ b\ op\ c\r\n\ \ \ \ The\ operator\ characters\ are\:\ 'u'\ union,\ 'i'\ intersection,\ 'd'\ difference,\ 'j'join\r\n
 comment8.params=graph
 comment8.target=java.lang.String\ toString(Graph)
@@ -35,4 +37,4 @@ comment8.text=\r\n\ Returns\ the\ graph\ with\ the\ edges\ in\ uppercase\ in\ al
 comment9.params=grafo\ a\ b
 comment9.target=void\ insertarArco(Graph,\ java.lang.String,\ java.lang.String)
 comment9.text=\r\n\ Funci\u00F3n\ que\ inserta\ un\ arco\ entre\ dos\ vertices\ al\ conjunto\ de\ arcos\r\n\ del\ grafo\ dado.\r\n\ @param\ Graph\ grafo,\ String\ vertice\ a\ ,\ String\ vertice\ b\r\n\ @return\ void\r\n
-numComments=13
+numComments=14
