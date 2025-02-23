@@ -110,7 +110,7 @@ public class GraphCalculatorTest {
         calculadora.assign("b",new String[]{"a","b","c"},new String [][]{{"a","b"},{"b","c"}});
         calculadora.assign("c",new String[]{"a","b","d"},new String [][]{{"a","b"},{"b","d"}});
         Graph grafoEsperado = new Graph(new String[] {"a","b"}, new String[][] {{"a","b"}}) ;
-        assertTrue(calculadora.sameGraph (calculadora.assignBinary("a","b",'i',"c"),grafoEsperado));
+        assertTrue(calculadora.sameGraphExactly (calculadora.assignBinary("a","b",'i',"c"),grafoEsperado));
     }
     
     @Test

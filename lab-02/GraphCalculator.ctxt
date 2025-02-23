@@ -9,7 +9,7 @@ comment10.text=\r\n\ Funci\u00F3n\ que\ elimina\ un\ arco\ entre\ dos\ vertices\
 comment11.params=grafo\ vertices
 comment11.target=boolean\ conjuntoPertence(Graph,\ java.lang.String[])
 comment12.params=graf1\ graf2
-comment12.target=boolean\ sameGraph(Graph,\ Graph)
+comment12.target=boolean\ sameGraphExactly(Graph,\ Graph)
 comment12.text=\r\n\ private\ ArrayList<String>\ mostrarCamino(Graph\ grafo,\ String[]\ vertices){\r\n\ \r\n\ ArrayList\ <\ String\ >\ caminoCompleto\ \=\ new\ ArrayList<>();\r\n\ ArrayList\ <String>\ listaVertices\=\ new\ ArrayList\ <>\ (Arrays.asList(vertices));\r\n\ \r\n\ for\ (int\ i\ \=\ 0;\ i\ <\ listaVertices.size()\ -1\ ;\ i++\ ){\r\n\ String\ inicio\ \=\ listaVertices.get(i);\r\n\ String\ destino\ \=\ listaVertices.get(i+1);\r\n\ ArrayList<String>\ subcamino\ \=\ grafo.path(inicio,\ destino);\r\n\ caminoCompleto.addAll(subcamino);\r\n\ }\r\n\ return\ caminoCompleto;\r\n\ }\r\n
 comment13.params=
 comment13.target=boolean\ ok()

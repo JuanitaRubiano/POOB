@@ -129,7 +129,7 @@ public class GraphCalculator {
                 break;
 
             case 'd':                
-               agrafo = bgrafo.difference(cgrafo); 
+               //agrafo = bgrafo.difference(cgrafo); 
                 break;
 
             case 'j':
@@ -198,8 +198,21 @@ public class GraphCalculator {
      * }
      */
 
-    public boolean sameGraph(Graph graf1,Graph graf2){
+    public boolean sameGraphExactly(Graph graf1,Graph graf2){
+        if (graf1.vertices() != graf2.vertices()){
+            return false;}
+            
+        if (!graf1.losVertices().containsAll(graf2.losVertices())){
+        return false;
+        }
         
+        if (graf1.edges() != graf2.edges()){
+            return false;
+        }
+        
+        if (! graf1.losEdges().equals(graf2.losEdges())){
+        return false;
+        }        
         return true;
     }
 
