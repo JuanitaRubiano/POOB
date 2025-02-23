@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 
 public class Graph {
     private ArrayList<String> vertices;
@@ -31,6 +34,14 @@ public class Graph {
             }
         }
     }
+    public Graph ( ArrayList<String> vertices,ArrayList<ArrayList<String>> edges){
+        this.vertices = vertices.stream().map((String s)->s.toUpperCase()).collect(Collectors.toCollection(ArrayList::new));
+        ArrayList<ArrayList<String>> newEdges = new ArrayList<ArrayList<String>>();
+        for (ArrayList<String> edge: edges){
+              newEdges.add(edge.stream().map((String s)->s.toUpperCase()).collect(Collectors.toCollection(ArrayList::new)));
+        }
+        this.edges= newEdges;   
+    }
 
     public Graph path(String start, String end) {
         return null;
@@ -42,8 +53,30 @@ public class Graph {
     }
 
     public Graph union(Graph g) {
-        return null;
+        ArrayList<String> unionVertices = new ArrayList<>();
+        // union vertices sin repertir
+        for(String vertice :this.vertices){
+            unionVertices.add(vertice);
+        }
+    
+        for (String vertice:g.vertices){
+            if(!this.vertices.contains(vertice)){
+                unionVertices.add(vertice);
+            }
+        }
+        //unir aristas sin duplicar
+        ArrayList<ArrayList<String>> unionEdges = new ArrayList<>();
+        for (ArrayList<String> edge:this.edges){
+            unionEdges.add(edge);
+        }
+        for(ArrayList<String> edge:g.edges){
+            if(!this.edges.contains(edge)){
+                unionEdges.add(edge);
+            }
+        }
+        return new Graph(unionVertices, unionEdges);
     }
+
 
     private boolean containsEdge(ArrayList<ArrayList<String>> edgeList, ArrayList<String> edge) {
         for (ArrayList<String> e : edgeList) {
@@ -86,19 +119,25 @@ public class Graph {
         // Grafo de ejemplo
         String[] vertices = { "A", "B", "C", "D", "E" };
         String[][] edges = { { "A", "B" }, { "B", "C" }, { "C", "D" }, { "D", "E" }, { "B", "D" } };
+        String[] vertices1 = { "A", "B", "C", "D", "E" ,"f"};
+        String[][] edges1 = { { "A", "B" }, { "B", "C" }, { "C", "D" }, { "D", "E" }, { "B", "D" },{"f","a"} };
 
         Graph graph = new Graph(vertices, edges);
         System.out.println("Grafo original:");
         System.out.println(graph);
+        Graph graph2 = new Graph(vertices1, edges1);
+        System.out.println("Grafo original:");
+        System.out.println(graph2);
+        System.out.println(graph2.union(graph));
 
         // Obtener un camino desde A hasta E
-        Graph pathGraph = graph.path("A", "E");
-        if (pathGraph != null) {
-            System.out.println("\nCamino encontrado desde A hasta E:");
-            System.out.println(pathGraph);
-        } else {
-            System.out.println("\nNo se encontró camino desde A hasta E.");
-        }
+        //Graph pathGraph = graph.path("A", "E");
+        //if (pathGraph != null) {
+            //System.out.println("\nCamino encontrado desde A hasta E:");
+            //System.out.println(pathGraph);
+       // } else {
+            //System.out.println("\nNo se encontró camino desde A hasta E.");
+        //}
     }
 
     @Override
