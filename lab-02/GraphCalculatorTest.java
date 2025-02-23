@@ -100,6 +100,9 @@ public class GraphCalculatorTest {
     }
 
     
+    @Test
+    public void shouldUnion(){
+    }
     /**
      * Tears down the test fixture.
      *
