@@ -55,11 +55,15 @@ public class GraphCalculatorTest {
         assertTrue(calculadora.ok());
     }
 
-    @Test
-    public void ShouldTostring() {
-        // JR
+      @Test
+    public void shouldConvertToString(){
+        GraphCalculator calculator = new GraphCalculator();
+        String [] vertices ={"ABCD","ABC","MUL"};
+        String [][] edges = {{"ABCD","MUL"},{"MUL","ABC"}};  
+        String data= "(MUL, ABC) (ABCD, MUL)";
+        Graph grafo = new Graph (vertices,edges);
+        assertEquals(data, calculator.toString(grafo));
     }
-
     @Test
     public void ShouldinsertarArco() {
         GraphCalculator calculadora = new GraphCalculator();

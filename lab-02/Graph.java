@@ -216,29 +216,23 @@ public class Graph {
         return null;
     }
 
-    /**
-     *
-     * 
-     * public Graph difference(Graph g) {
-     * ArrayList <String> verticesDif = new ArrayList <>();
-     * ArrayList<ArrayList<String>> arcosDif = new ArrayList <>();
-     * for (String vertice : this.vertices){
-     * if (!g.losVertices().contains(vertice)){
-     * verticesDif.add(vertice);
-     * }
-     * 
-     * 
-     * // conversión de tipos de variables
-     * String[] verticesDifStr = verticesDif.toArray(new String[0]);
-     * 
-     * String[][] arcosDifStr = new String [arcosDif.size()][];
-     * for (int i=0; i< arcosDif.size() ; i++){
-     * arcosDifStr[i] = arcosDif.get(i).toArray(new String[0]);
-     * }
-     * }
-     * return new Graph (verticesDifStr,arcosDif);
-     * }
-     */
+    
+     
+      
+    public Graph difference(Graph g) {
+        ArrayList <String> verticesDif = new ArrayList <>();
+        ArrayList<ArrayList<String>> arcosDif = new ArrayList <>();
+        for (String vertice : this.vertices){
+             if (!g.losVertices().contains(vertice)){
+             verticesDif.add(vertice);
+             }
+         
+            }
+         // conversión de tipos de variables
+    
+        return new Graph (verticesDif,arcosDif);
+          }
+     
     public Graph intersection(Graph g) {
         ArrayList<String> verComunes = new ArrayList<>();
         ArrayList<ArrayList<String>> arComunes = new ArrayList<>();
@@ -254,15 +248,7 @@ public class Graph {
                 arComunes.add(edge);
             }
         }
-
-        // conversión de tipo de variables
-        String[] verComunesStr = verComunes.toArray(new String[0]);
-
-        String[][] arComunesStr = new String[arComunes.size()][];
-        for (int i = 0; i < arComunes.size(); i++) {
-            arComunesStr[i] = arComunes.get(i).toArray(new String[0]);
-        }
-        return new Graph(verComunesStr, arComunesStr);
+        return new Graph(verComunes, arComunes);
     }
 
 }
