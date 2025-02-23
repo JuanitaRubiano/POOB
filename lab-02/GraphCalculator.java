@@ -14,7 +14,9 @@ public class GraphCalculator {
     private TreeMap<String, Graph> variables;
     private Graph ultGrafo;
     private boolean status;
-
+    /**
+     * Constructor de calculadora de grafos
+     */
     public GraphCalculator() {
         this.variables = new TreeMap<String, Graph>();
         ultGrafo = null;
@@ -112,13 +114,13 @@ public class GraphCalculator {
     The operator characters are: 'u' union, 'i' intersection, 'd' difference, 'j'join
      */
     public Graph assignBinary(String a, String b, char op, String c){
-       
+
         Graph bgrafo = variables.get(b);
         Graph cgrafo = variables.get(c);
         Graph agrafo = null;
-        
+
         switch (op) {
-          
+
             case 'u':
 
                 agrafo = bgrafo.union(cgrafo);
@@ -129,7 +131,7 @@ public class GraphCalculator {
                 break;
 
             case 'd':                
-               agrafo = bgrafo.difference(cgrafo); 
+                agrafo = bgrafo.difference(cgrafo); 
                 break;
 
             case 'j':
@@ -181,7 +183,6 @@ public class GraphCalculator {
         return true;
     }
 
- 
     /**
      * private ArrayList<String> mostrarCamino(Graph grafo, String[] vertices){
      * 
@@ -201,25 +202,27 @@ public class GraphCalculator {
     public boolean sameGraphExactly(Graph graf1,Graph graf2){
         if (graf1.vertices() != graf2.vertices()){
             return false;}
-            
+
         if (!graf1.losVertices().containsAll(graf2.losVertices())){
-        return false;
+            return false;
         }
-        
+
         if (graf1.edges() != graf2.edges()){
             return false;
         }
-        
+
         if (! graf1.losEdges().equals(graf2.losEdges())){
-        return false;
+            return false;
         }        
         return true;
     }
-    
-    // If the last operation was successfully completed
+
+    /**
+     * Metodo que revisa q todas las operaciones se realizaron correctamente.
+     * @return boolean
+     */
     public boolean ok() {
         return status;
     }
 }
-
 

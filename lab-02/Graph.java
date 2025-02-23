@@ -41,21 +41,21 @@ public class Graph {
     }
 
     /**
-      * * Se hizo una sobre escritura de constructor para ser utilizado en el metodo de Union.
-         * Se utilizo programacion funcional
-         * Constructor que recibe listas de vértices y aristas.
-         * Convierte los nombres a mayúsculas y elimina duplicados.
-         *
-         * @param vertices Lista de vértices
-         * @param edges Lista de aristas
+     * * Se hizo una sobre escritura de constructor para ser utilizado en el metodo de Union.
+     * Se utilizo programacion funcional
+     * Constructor que recibe listas de vértices y aristas.
+     * Convierte los nombres a mayúsculas y elimina duplicados.
+     *
+     * @param vertices Lista de vértices
+     * @param edges Lista de aristas
      */
     public Graph(ArrayList<String> vertices, ArrayList<ArrayList<String>> edges) {
         this.vertices = vertices.stream().map((String s) -> s.toUpperCase())
-                .collect(Collectors.toCollection(ArrayList::new));
+        .collect(Collectors.toCollection(ArrayList::new));
         ArrayList<ArrayList<String>> newEdges = new ArrayList<ArrayList<String>>();
         for (ArrayList<String> edge : edges) {
             newEdges.add(
-                    edge.stream().map((String s) -> s.toUpperCase()).collect(Collectors.toCollection(ArrayList::new)));
+                edge.stream().map((String s) -> s.toUpperCase()).collect(Collectors.toCollection(ArrayList::new)));
         }
         this.edges = newEdges;
     }
@@ -69,6 +69,12 @@ public class Graph {
 
     }
 
+    /**
+     * Calcula la unión de este grafo con otro grafo.
+     *
+     * @param g Grafo con el cual se quiere unir
+     * @return Nuevo grafo que representa la unión de ambos
+     */
     public Graph union(Graph g) {
         ArrayList<String> unionVertices = new ArrayList<>();
         // union vertices sin repertir
@@ -94,6 +100,13 @@ public class Graph {
         return new Graph(unionVertices, unionEdges);
     }
 
+    /**
+     * Verifica si una lista de aristas contiene una arista específica.
+     *
+     * @param edgeList Lista de aristas
+     * @param edge Arista a verificar
+     * @return true si la arista ya existe en la lista, false en caso contrario
+     */
     private boolean containsEdge(ArrayList<ArrayList<String>> edgeList, ArrayList<String> edge) {
         for (ArrayList<String> e : edgeList) {
             if (e.size() == edge.size() && e.containsAll(edge) && edge.containsAll(e)) {
@@ -117,6 +130,9 @@ public class Graph {
         return edges.size();
     }
 
+    /**
+     * Verifica si dos grafos son iguales comparando vértices y aristas.
+     */
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Graph)) {
@@ -156,6 +172,12 @@ public class Graph {
         // }
     }
 
+    /**
+     * Retorna una representación en cadena del grafo, se usa @Override ya que el método toString(),
+     * se esta sobrescribiendo el método toString() de la clase base Object de java.
+     *
+     * @return Una cadena que representa las aristas del grafo en el formato (A, B) (C, D) ...
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -228,33 +250,42 @@ public class Graph {
         return this.edges;
     }
 
+    /**
+     * Método que calcula la junta de dos grafos.
+     *     * @return un grafo que es el resultado de la junta entre el grafo actual y el grafo g
+     */
     public Graph join(Graph g) {
         return null;
     }
 
-    
-     
-      
+    /**
+     * Método que calcula la diferencia de dos grafos.
+     *     * @return un grafo que es el resultado de la diferencia entre el grafo actual y el grafo g
+     */
     public Graph difference(Graph g) {
         ArrayList <String> verticesDif = new ArrayList <>();
         ArrayList<ArrayList<String>> arcosDif = new ArrayList <>();
-        
+
         for (String vertice : this.vertices){
-             if (!g.losVertices().contains(vertice)){
-             verticesDif.add(vertice);
-             }
-         
+            if (!g.losVertices().contains(vertice)){
+                verticesDif.add(vertice);
             }
-        
+
+        }
+
         for ( ArrayList <String> edge: this.edges){
             if (!g.losEdges().contains(edge)){
                 arcosDif.add(edge);
             }
         }
-    
+
         return new Graph (verticesDif,arcosDif);
-          }
-     
+    }
+
+    /**
+     * Método que calcula la intersección de dos grafos.
+     *     * @return un grafo que es el resultado de la intersección entre el grafo actual y el grafo g
+     */
     public Graph intersection(Graph g) {
         ArrayList<String> verComunes = new ArrayList<>();
         ArrayList<ArrayList<String>> arComunes = new ArrayList<>();
@@ -272,7 +303,5 @@ public class Graph {
         }
         return new Graph(verComunes, arComunes);
     }
-    
-    
 
 }
